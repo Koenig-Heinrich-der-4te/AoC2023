@@ -23,6 +23,8 @@ def find_numbers(y, x):
                     numbers.append(num)
                     # ignor the number if we find it again
                     prev_num = num
+            else:
+                prev_num = 0
     return numbers
 
 

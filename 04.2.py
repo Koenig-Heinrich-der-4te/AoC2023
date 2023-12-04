@@ -8,12 +8,9 @@ total_card_count = 0
 
 for card in cards[::-1]:
     meta, content = card.split(": ")
-    *_, id = meta.split(" ")
+    _, id = meta.split()
     id = int(id)
-    winning_numbers, numbers = [
-        [int(num) for num in num_row.split(" ") if len(num) != 0]
-        for num_row in content.split(" | ")
-    ]
+    winning_numbers, numbers = [num_row.split() for num_row in content.split(" | ")]
 
     wins = 0
     for num in numbers:

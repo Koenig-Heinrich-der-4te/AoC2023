@@ -1,6 +1,6 @@
 # https://adventofcode.com/2023/day/1
 with open("02.txt") as file:
-    games = file.read().split("\n")
+    games = file.read().splitlines()
 
 dice_power_sum = 0
 
