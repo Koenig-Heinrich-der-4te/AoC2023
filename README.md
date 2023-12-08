@@ -9,3 +9,4 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 5** ([Part1](05.1.py), [Part2](05.2.py)): [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5)
 -   **Day 6** ([Part1](06.1.py), [Part2](06.2.py)): [Wait For It](https://adventofcode.com/2023/day/6)
 -   **Day 7** ([Part1](07.1.py), [Part2](07.2.py)): [Camel Cards](https://adventofcode.com/2023/day/7)
+-   **Day 8** ([Part1](08.1.py), [Part2](08.2.py)): [Haunted Wasteland](https://adventofcode.com/2023/day/8)
