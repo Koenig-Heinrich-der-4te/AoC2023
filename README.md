@@ -10,3 +10,4 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 6** ([Part1](06.1.py), [Part2](06.2.py)): [Wait For It](https://adventofcode.com/2023/day/6)
 -   **Day 7** ([Part1](07.1.py), [Part2](07.2.py)): [Camel Cards](https://adventofcode.com/2023/day/7)
 -   **Day 8** ([Part1](08.1.py), [Part2](08.2.py)): [Haunted Wasteland](https://adventofcode.com/2023/day/8)
+-   **Day 9** ([Part1](09.1.py), [Part2](09.2.py)): [Mirage Maintenance](https://adventofcode.com/2023/day/9)
