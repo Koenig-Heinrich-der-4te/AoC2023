@@ -74,7 +74,6 @@ for y in range(len(grid)):
             # "-LJ" are not considered walls because if you offset the ray by 0.25 tiles it wouldnt hit them
             if segment_type not in "-LJ":
                 walls += 1
-        else:
-            if walls % 2 == 1:
-                count += 1
+        elif walls % 2 == 1:
+            count += 1
 print(f"There are {count} tiles inside the loop.")  # 317
