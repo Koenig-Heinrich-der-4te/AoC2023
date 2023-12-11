@@ -3,10 +3,10 @@ with open("10.txt") as file:
     grid = file.read().splitlines()
 
 
-NORTH = 0
-EAST = 1
-SOUTH = 2
-WEST = 3
+NORTH = (0, -1)
+EAST = (1, 0)
+SOUTH = (0, 1)
+WEST = (-1, 0)
 
 
 connections = {
@@ -18,7 +18,7 @@ connections = {
     "L": (NORTH, EAST),
 }
 
-facing_to_delta = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+opposite = {NORTH: SOUTH, EAST: WEST, SOUTH: NORTH, WEST: EAST}
 
 
 def walk(pos, facing):
@@ -27,10 +27,10 @@ def walk(pos, facing):
     pipe_connections = connections[segment_type]
     new_facing = (
         pipe_connections[0]
-        if pipe_connections[0] != ((facing + 2) % 4)
+        if pipe_connections[0] != opposite[facing]
         else pipe_connections[1]
     )
-    dx, dy = facing_to_delta[new_facing]
+    dx, dy = new_facing
     new_pos = (x + dx, y + dy)
     return (new_pos, new_facing)
 
@@ -45,15 +45,15 @@ for y, row in enumerate(grid):
 start_x, start_y = start_pos
 # find start directions
 for direction in (NORTH, EAST, SOUTH, WEST):
-    dx, dy = facing_to_delta[direction]
+    dx, dy = direction
     x, y = start_x + dx, start_y + dy
     if 0 <= x < len(grid[0]) and 0 <= y < len(grid):
-        if grid[y][x] != "." and ((direction + 2) % 4) in connections[grid[y][x]]:
+        if grid[y][x] != "." and opposite[direction] in connections[grid[y][x]]:
             heads.append(((x, y), direction))
 
 walked_steps = 1
 
-while heads[0][0] != heads[1][0] and grid[heads[0][0][1]][heads[0][0][0]] != "S":
+while heads[0][0] != heads[1][0]:
     walked_steps += 1
     for i in range(len(heads)):
         heads[i] = walk(*heads[i])
