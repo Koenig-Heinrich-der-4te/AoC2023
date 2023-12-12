@@ -16,22 +16,24 @@ HIGH_CARD = 0
 
 def get_type_rating(hand):
     distinct_card_count = len(set(hand))
-    if distinct_card_count == 1:
-        return FIVE_OF_A_KIND
-    if distinct_card_count == 2:
-        first_count = hand.count(hand[0])
-        if first_count == 4 or first_count == 1:
-            return FOUR_OF_A_KIND
-        return FULL_HOUSE
-    if distinct_card_count == 3:
-        deduplicated = list(set(hand))
-        highest_count = max(hand.count(card) for card in deduplicated)
-        if highest_count == 3:
-            return THREE_OF_A_KIND
-        return TWO_PAIR
-    if distinct_card_count == 4:
-        return ONE_PAIR
-    return HIGH_CARD
+    match distinct_card_count:
+        case 1:
+            return FIVE_OF_A_KIND
+        case 2:
+            first_count = hand.count(hand[0])
+            if first_count == 4 or first_count == 1:
+                return FOUR_OF_A_KIND
+            return FULL_HOUSE
+        case 3:
+            deduplicated = list(set(hand))
+            highest_count = max(hand.count(card) for card in deduplicated)
+            if highest_count == 3:
+                return THREE_OF_A_KIND
+            return TWO_PAIR
+        case 4:
+            return ONE_PAIR
+        case 5:
+            return HIGH_CARD
 
 
 # ensures a distinct value for each possible hand

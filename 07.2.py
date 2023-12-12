@@ -15,41 +15,40 @@ HIGH_CARD = 0
 
 
 def get_type_rating(hand):
-    distinct_card_count = len(set(hand))
-    if distinct_card_count == 1:
-        return FIVE_OF_A_KIND
-    if distinct_card_count == 2:
-        first_count = hand.count(hand[0])
-        if first_count == 4 or first_count == 1:
-            return FOUR_OF_A_KIND
-        return FULL_HOUSE
-    if distinct_card_count == 3:
-        deduplicated = list(set(hand))
-        highest_count = max(hand.count(card) for card in deduplicated)
-        if highest_count == 3:
-            return THREE_OF_A_KIND
-        return TWO_PAIR
-    if distinct_card_count == 4:
-        return ONE_PAIR
-    return HIGH_CARD
+    distinct_cards = set(hand)
+    # handle jokers
+    distinct_cards_count = [
+        (hand.count(card), card) for card in distinct_cards if card != 0
+    ]
+    distinct_cards_count.sort(reverse=True)
+    if 0 in distinct_cards:
+        if len(distinct_cards_count) == 0:
+            return FIVE_OF_A_KIND
+        count, card = distinct_cards_count[0]
+        distinct_cards_count[0] = (count + hand.count(0), card)
 
-
-def get_best_type_rating(hand):
-    joker_count = hand.count(0)
-    if joker_count == 0:
-        return get_type_rating(hand)
-    # place jokers at the start of the hand for easy replacement
-    hand = sorted(hand)
-    best_rating = max(
-        get_type_rating([replacement_card] * joker_count + hand[joker_count:])
-        for replacement_card in set(hand)
-    )
-    return best_rating
+    match len(distinct_cards_count):
+        case 1:
+            return FIVE_OF_A_KIND
+        case 2:
+            first_count = distinct_cards_count[0][0]
+            if first_count == 4:
+                return FOUR_OF_A_KIND
+            return FULL_HOUSE
+        case 3:
+            highest_count = distinct_cards_count[0][0]
+            if highest_count == 3:
+                return THREE_OF_A_KIND
+            return TWO_PAIR
+        case 4:
+            return ONE_PAIR
+        case 5:
+            return HIGH_CARD
 
 
 # ensures a distinct value for each possible hand
 def get_rating(hand):
-    rating = get_best_type_rating(hand)
+    rating = get_type_rating(hand)
     for card in hand:
         rating = rating * len(card_values) + card
     return rating
