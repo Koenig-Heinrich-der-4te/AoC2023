@@ -14,3 +14,4 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 10** ([Part1](10.1.py), [Part2](10.2.py)): [Pipe Maze](https://adventofcode.com/2023/day/10)
 -   **Day 11** ([Part1](11.1.py), [Part2](11.2.py)): [Cosmic Expansion](https://adventofcode.com/2023/day/11)
 -   **Day 12** ([Part1](12.1.py)): [Hot Springs](https://adventofcode.com/2023/day/12)
+-   **Day 13** ([Part1 & Part2](13.py)): [Point of Incidence](https://adventofcode.com/2023/day/13)
