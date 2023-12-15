@@ -67,7 +67,9 @@ def get_load(stopped_rocks):
 
 # Part 1
 north_load = get_load(tilt(0, -1))
-print(f"Tilting north puts a load of {north_load} on the north support beams")  # 110779
+print(
+    f"(Part 1) Tilting north puts a load of {north_load} on the north support beams"
+)  # 110779
 
 # Part 2
 total_cycles = 1_000_000_000
@@ -78,7 +80,7 @@ final_cycle = (total_cycles - first_cycle) % len(repeating_results)
 final_cycle_load = get_load(repeating_results[final_cycle])
 
 print(
-    f"The sequence repeats every",
+    "(Part 2) The sequence repeats every",
     len(repeating_results),
     "cycle(s), starting from cycle",
     first_cycle,
