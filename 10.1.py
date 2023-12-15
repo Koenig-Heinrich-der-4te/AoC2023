@@ -21,15 +21,18 @@ connections = {
 opposite = {NORTH: SOUTH, EAST: WEST, SOUTH: NORTH, WEST: EAST}
 
 
+# turns to the next tile and steps to it
 def walk(pos, facing):
     x, y = pos
     segment_type = grid[y][x]
     pipe_connections = connections[segment_type]
+    # turn to the next tile
     new_facing = (
         pipe_connections[0]
         if pipe_connections[0] != opposite[facing]
         else pipe_connections[1]
     )
+    # step to the next tile
     dx, dy = new_facing
     new_pos = (x + dx, y + dy)
     return (new_pos, new_facing)
@@ -53,6 +56,7 @@ for direction in (NORTH, EAST, SOUTH, WEST):
 
 walked_steps = 1
 
+# walk until heads meet
 while heads[0][0] != heads[1][0]:
     walked_steps += 1
     for i in range(len(heads)):

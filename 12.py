@@ -39,10 +39,14 @@ def permutate_r(
     dotremain,
     checker_state=default_checker_state,
 ):
+    key = (i, hashremain, dotremain, checker_state)
+    if key in cache:
+        return cache[key]
     if hashremain == 0 and dotremain == 0:
         valid, _ = valid_range(
             permutation, continueity, len(permutation), checker_state
         )
+        cache[key] = valid
         return valid
 
     while i < len(permutation) and permutation[i] != "?":
@@ -80,6 +84,7 @@ def permutate_r(
             )
 
     permutation[i] = "?"
+    cache[key] = count
     return count
 
 
@@ -96,10 +101,23 @@ def find_permutations(springs, continueity):
     )
 
 
-count = 0
+# Part 1
+count1 = 0
 for line in lines:
+    cache = {}
     springs, continueity = line.split()
     continueity = [int(x) for x in continueity.split(",")]
-    count += find_permutations(springs, continueity)
+    count1 += find_permutations(springs, continueity)
 
-print(f"Combined there are {count} possible combinations")
+print(f"(Part1) There are {count1} possible combinations")
+
+# Part 2
+count2 = 0
+for line in lines:
+    cache = {}
+    springs, continueity = line.split()
+    continueity = [int(x) for x in continueity.split(",")] * 5
+    springs = "?".join([springs] * 5)
+    count2 += find_permutations(springs, continueity)
+
+print(f"(Part2) There are {count2} possible combinations")
