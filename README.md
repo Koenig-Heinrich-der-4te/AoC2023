@@ -18,3 +18,4 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 14** ([Part1 & Part2](14.py)): [Parabolic Reflector Dish](https://adventofcode.com/2023/day/14)
 -   **Day 15** ([Part1 & Part2](15.py)): [Lens Library](https://adventofcode.com/2023/day/15)
 -   **Day 16** ([Part1 & Part2](16.py)): [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)
+-   **Day 17** ([Part1 & Part2](17.py)): [Clumsy Crucible](https://adventofcode.com/2023/day/17)
