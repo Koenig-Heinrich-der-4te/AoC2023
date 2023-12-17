@@ -11,17 +11,16 @@ width = len(city_heat_loss_map[0])
 
 
 def explore(turn_moves, no_turn_moves=0):
-    queue = [(0, 0, 0, (1, 0), 0)]
+    target = (width - 1, height - 1)
+    queue = [(0, 0, 0, (1, 0))]
     explored = {(0, 0, (1, 0)): 0}
     best = 1_000_000_000
     while queue:
-        _, x, y, d, cost = queue.pop(0)
-        if x == width - 1 and y == height - 1:
+        cost, x, y, d = queue.pop(0)
+        if (x, y) == target:
             best = min(best, cost)
         # this path is already too expensive
-        if cost >= best:
-            continue
-        if explored[(x, y, d)] < cost:
+        if cost >= best or explored[(x, y, d)] < cost:
             continue
         # movement before turing is allowed
         for _ in range(no_turn_moves):
@@ -35,15 +34,11 @@ def explore(turn_moves, no_turn_moves=0):
             if not (0 <= x < width and 0 <= y < height):
                 break
             cost += city_heat_loss_map[y][x]
-            if cost >= best:
-                break
-            # determine the quality of the path, used to sort the queue
-            order = cost - ((width - x) + (height - y)) * 5
             # explore left and right
             for dir in ((-d[1], -d[0]), (d[1], d[0])):
                 if (x, y, dir) not in explored or explored[(x, y, dir)] > cost:
                     explored[(x, y, dir)] = cost
-                    bisect.insort(queue, (order, x, y, dir, cost))
+                    bisect.insort(queue, (cost, x, y, dir))
     return best
 
 
