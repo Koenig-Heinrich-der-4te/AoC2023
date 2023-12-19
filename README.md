@@ -20,3 +20,4 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 16** ([Part1 & Part2](16.py)): [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)
 -   **Day 17** ([Part1 & Part2](17.py)): [Clumsy Crucible](https://adventofcode.com/2023/day/17)
 -   **Day 18** ([Part1 & Part2](18.py)): [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)
+-   **Day 19** ([Part1 & Part2](19.py)): [Aplenty](https://adventofcode.com/2023/day/19)
