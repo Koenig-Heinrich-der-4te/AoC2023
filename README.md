@@ -24,3 +24,4 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 20** ([Part1](20.1.py)): [Pulse Propagation](https://adventofcode.com/2023/day/20)
 -   **Day 21** ([Part1](21.1.py)): [Step Counter](https://adventofcode.com/2023/day/21)
 -   **Day 22** ([Part1 & Part2](22.py)): [Sand Slabs](https://adventofcode.com/2023/day/22)
+-   **Day 23** ([Part1 & Part2](23.py)): [A Long Walk](https://adventofcode.com/2023/day/23)
