@@ -12,7 +12,7 @@ start = (start % (width + 1), start // (width + 1))
 
 def walk(max_steps):
     queue = [(start, 0)]
-    seen = set()
+    seen = set(queue)
     while queue:
         (x, y), steps = queue.pop(0)
         steps += 1
@@ -22,12 +22,12 @@ def walk(max_steps):
             new_x, new_y = x + dx, y + dy
             if garden[new_y][new_x] == "#":
                 continue
-            if ((new_x, new_y), steps) in seen:
+            if ((new_x, new_y), steps % 2) in seen:
                 continue
-            seen.add(((new_x, new_y), steps))
+            seen.add(((new_x, new_y), steps % 2))
             queue.append(((new_x, new_y), steps))
 
-    return sum(1 for _, steps in seen if steps == max_steps)
+    return sum(1 for _, steps in seen if steps == max_steps % 2)
 
 
 accessible_plots = walk(64)

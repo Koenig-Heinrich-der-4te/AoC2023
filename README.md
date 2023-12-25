@@ -25,3 +25,5 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 21** ([Part1](21.1.py)): [Step Counter](https://adventofcode.com/2023/day/21)
 -   **Day 22** ([Part1 & Part2](22.py)): [Sand Slabs](https://adventofcode.com/2023/day/22)
 -   **Day 23** ([Part1 & Part2](23.py)): [A Long Walk](https://adventofcode.com/2023/day/23)
+-   **Day 24** ([Part1](24.1.py)): [Never Tell Me The Odds](https://adventofcode.com/2023/day/24)
+-   **Day 25** ([Part1](25.1.py)): [Snowverload](https://adventofcode.com/2023/day/25)
