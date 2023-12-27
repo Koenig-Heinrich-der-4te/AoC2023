@@ -21,7 +21,7 @@ this repository contains my solutions to 2023's [Advent of Code](https://advento
 -   **Day 17** ([Part1 & Part2](17.py)): [Clumsy Crucible](https://adventofcode.com/2023/day/17)
 -   **Day 18** ([Part1 & Part2](18.py)): [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)
 -   **Day 19** ([Part1 & Part2](19.py)): [Aplenty](https://adventofcode.com/2023/day/19)
--   **Day 20** ([Part1](20.1.py)): [Pulse Propagation](https://adventofcode.com/2023/day/20)
+-   **Day 20** ([Part1 & Part2](20.py)): [Pulse Propagation](https://adventofcode.com/2023/day/20)
 -   **Day 21** ([Part1 & Part2](21.py)): [Step Counter](https://adventofcode.com/2023/day/21)
 -   **Day 22** ([Part1 & Part2](22.py)): [Sand Slabs](https://adventofcode.com/2023/day/22)
 -   **Day 23** ([Part1 & Part2](23.py)): [A Long Walk](https://adventofcode.com/2023/day/23)
