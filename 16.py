@@ -1,9 +1,9 @@
 # https://adventofcode.com/2023/day/16
 with open("16.txt") as f:
-    contrapion = f.read().splitlines()
+    contraption = f.read().splitlines()
 
-height = len(contrapion)
-width = len(contrapion[0])
+height = len(contraption)
+width = len(contraption[0])
 
 
 N = (0, -1)
@@ -13,7 +13,7 @@ W = (-1, 0)
 
 
 def get_walking_directions(x, y, d):
-    match contrapion[y][x]:
+    match contraption[y][x]:
         case "|":
             return [N, S]
         case "-":

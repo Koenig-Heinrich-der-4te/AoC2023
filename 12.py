@@ -3,29 +3,29 @@ with open("12.txt") as f:
     lines = f.readlines()
 
 
-def valid_range(permutation, continueity, until, checker_state):
+def valid_range(permutation, placement_order, until, checker_state):
     hashstreak = 0
-    continueity_k, start = checker_state
+    placement_order_k, start = checker_state
     next_start = start
     for i in range(start, until):
         if permutation[i] == "#":
             hashstreak += 1
-            if hashstreak > continueity[continueity_k]:
+            if hashstreak > placement_order[placement_order_k]:
                 return False, None
         elif hashstreak != 0:
             next_start = i
-            if hashstreak != continueity[continueity_k]:
+            if hashstreak != placement_order[placement_order_k]:
                 return False, None
-            continueity_k += 1
+            placement_order_k += 1
             hashstreak = 0
 
     if hashstreak != 0 and until == len(permutation):
         if (
-            hashstreak != continueity[continueity_k]
-            or continueity_k != len(continueity) - 1
+            hashstreak != placement_order[placement_order_k]
+            or placement_order_k != len(placement_order) - 1
         ):
             return False, None
-    return True, (continueity_k, next_start)
+    return True, (placement_order_k, next_start)
 
 
 default_checker_state = (0, 0)
@@ -34,7 +34,7 @@ default_checker_state = (0, 0)
 def permutate_r(
     permutation,
     i,
-    continueity,
+    placement_order,
     hashremain,
     dotremain,
     checker_state=default_checker_state,
@@ -44,7 +44,7 @@ def permutate_r(
         return cache[key]
     if hashremain == 0 and dotremain == 0:
         valid, _ = valid_range(
-            permutation, continueity, len(permutation), checker_state
+            permutation, placement_order, len(permutation), checker_state
         )
         cache[key] = valid
         return valid
@@ -56,13 +56,13 @@ def permutate_r(
     if hashremain != 0:
         permutation[i] = "#"
         valid, new_checker_state = valid_range(
-            permutation, continueity, i + 1, checker_state
+            permutation, placement_order, i + 1, checker_state
         )
         if valid:
             count += permutate_r(
                 permutation,
                 i + 1,
-                continueity,
+                placement_order,
                 hashremain - 1,
                 dotremain,
                 new_checker_state,
@@ -71,13 +71,13 @@ def permutate_r(
     if dotremain != 0:
         permutation[i] = "."
         valid, new_checker_state = valid_range(
-            permutation, continueity, i + 1, checker_state
+            permutation, placement_order, i + 1, checker_state
         )
         if valid:
             count += permutate_r(
                 permutation,
                 i + 1,
-                continueity,
+                placement_order,
                 hashremain,
                 dotremain - 1,
                 new_checker_state,
@@ -88,16 +88,16 @@ def permutate_r(
     return count
 
 
-def find_permutations(springs, continueity):
+def find_permutations(springs, placement_order):
     if springs.count("?") == 0:
         return 1
     parts = springs.split("?")
     working_count = springs.count("#")
-    required_working = sum(continueity)
+    required_working = sum(placement_order)
     unkown_working = required_working - working_count
     unkown_not_working = len(parts) - unkown_working - 1
     return permutate_r(
-        list(springs), 0, continueity, unkown_working, unkown_not_working
+        list(springs), 0, placement_order, unkown_working, unkown_not_working
     )
 
 
@@ -105,19 +105,19 @@ def find_permutations(springs, continueity):
 count1 = 0
 for line in lines:
     cache = {}
-    springs, continueity = line.split()
-    continueity = [int(x) for x in continueity.split(",")]
-    count1 += find_permutations(springs, continueity)
+    springs, placement_order = line.split()
+    placement_order = [int(x) for x in placement_order.split(",")]
+    count1 += find_permutations(springs, placement_order)
 
-print(f"(Part1) There are {count1} possible combinations")
+print(f"(Part1) There are {count1} possible combinations")  # 7407
 
 # Part 2
 count2 = 0
 for line in lines:
     cache = {}
-    springs, continueity = line.split()
-    continueity = [int(x) for x in continueity.split(",")] * 5
+    springs, placement_order = line.split()
+    placement_order = [int(x) for x in placement_order.split(",")] * 5
     springs = "?".join([springs] * 5)
-    count2 += find_permutations(springs, continueity)
+    count2 += find_permutations(springs, placement_order)
 
-print(f"(Part2) There are {count2} possible combinations")
+print(f"(Part2) There are {count2} possible combinations")  # 30568243604962

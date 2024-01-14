@@ -30,7 +30,7 @@ def rests_on(brick):
     return bricks
 
 
-def settel_brick(brick, id):
+def settle_brick(brick, id):
     z = brick[1][2]
     for x in range(brick[0][0], brick[1][0] + 1):
         for y in range(brick[0][1], brick[1][1] + 1):
@@ -41,7 +41,7 @@ for id, brick in enumerate(bricks):
     while brick[0][2] != 1 and not move_would_overlap(brick):
         brick[0][2] -= 1
         brick[1][2] -= 1
-    settel_brick(brick, id)
+    settle_brick(brick, id)
     resting_on = rests_on(brick)
     for rested_on in resting_on:
         bricks[rested_on][2].add(id)
@@ -64,9 +64,9 @@ moveable_count = 0
 for brick in bricks:
     if all(len(bricks[rester][3]) >= 2 for rester in brick[2]):
         moveable_count += 1
-print(f"(Part 1) {moveable_count} bricks can be moved safely.")
+print(f"(Part 1) {moveable_count} bricks can be moved safely.")  # 386
 
-falling_count = sum(get_falling_count(id) for id in range(len(bricks)))  # 386
+falling_count = sum(get_falling_count(id) for id in range(len(bricks)))
 print(
     f"(Part 2) In total {falling_count} bricks will fall if one brick is removed."
 )  # 39933
